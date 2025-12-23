@@ -35,43 +35,6 @@ st.subheader("Dataset Preview")
 st.dataframe(df.head())
 st.markdown('</div>',unsafe_allow_html=True)
 
-import streamlit as st
-import numpy as np
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score   
-
-st.set_page_config("Linear Regression",layout="centered")
-
-def load_css(file):
-     
-     with open(file) as f:
-        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
-load_css("style.css")
-
-st.markdown("""
-            <div class="header">
-                <h1>Linear Regression Web App</h1>
-                <p>This app allows you to perform linear regression on your dataset and visualize the results.</p>
-            </div>
-            """, unsafe_allow_html=True)
-
-# load data
-@st.cache_data
-def load_data():
-    return sns.load_dataset("tips")
-df=load_data()
-
-#dataset preview
-st.markdown('<div class="card">',unsafe_allow_html=True)
-st.subheader("Dataset Preview")
-st.dataframe(df.head())
-st.markdown('</div>',unsafe_allow_html=True)
-
 #prepare the data
 
 x,y=df[["total_bill"]],df["tip"]
